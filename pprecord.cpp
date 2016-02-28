@@ -22,4 +22,19 @@ std::string PPRecord::GetDataTypeString()
     case PPDataType::Sum:
         return std::string((const char*)"Sum");
     }
+
+    return std::string((const char*)"");
+}
+
+std::string PPRecord::GetDataString()
+{
+    switch(Record.DataType)
+    {
+    case PPDataType::String:
+        return std::string((char*)Data, Record.DataSize);
+    case PPDataType::Integer:
+        return std::to_string(*(int*)Data);
+    }
+
+    return std::string((const char*)"");
 }

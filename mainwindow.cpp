@@ -18,6 +18,8 @@ MainWindow::MainWindow(QWidget *parent) :
         fields->last()->setEditable(false);
         fields->append(new QStandardItem(QString::fromStdString(pRec.GetDataTypeString())));
         fields->last()->setEditable(false);
+        fields->append(new QStandardItem(QString::fromStdString(pRec.GetDataString())));
+        fields->last()->setEditable(false);
 
         model->appendRow(*fields);
     }
@@ -25,12 +27,15 @@ MainWindow::MainWindow(QWidget *parent) :
     QStringList* headerLabels = new QStringList();
     headerLabels->append("Name");
     headerLabels->append("Type");
+    headerLabels->append("Data");
     model->setHorizontalHeaderLabels(*headerLabels);
 
     model->sort(0);
 
     ui->tableView->setModel(model);
     ui->tableView->setColumnWidth(0, 300);
+    ui->tableView->setColumnWidth(1, 70);
+    ui->tableView->setColumnWidth(2, 300);
 }
 
 MainWindow::~MainWindow()

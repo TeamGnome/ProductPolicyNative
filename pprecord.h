@@ -32,6 +32,7 @@ public:
     PPRecord();
 
     std::string GetDataTypeString();
+    std::string GetDataString();
 };
 
 #endif // PPRECORD_H
